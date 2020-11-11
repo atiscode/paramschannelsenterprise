@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AdministrationSwitchModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Channel">
+          <Key>
+            <PropertyRef Name="IDChannel" />
+          </Key>
+          <Property Name="IDChannel" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Segmento" Type="nvarchar" MaxLength="100" />
+          <Property Name="Code" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="AuthotizationNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductItemGroupCode" Type="int" />
+          <Property Name="Declarable" Type="char" MaxLength="1" />
+          <Property Name="PuntoEmision" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ambiente" Type="int" />
+          <Property Name="Iva" Type="int" />
+          <Property Name="CodigoProducto" Type="nvarchar" MaxLength="10" />
+          <Property Name="NombreProducto" Type="nvarchar" MaxLength="300" />
+          <Property Name="CategoriaCliente" Type="nvarchar" MaxLength="300" />
+          <Property Name="CuentaContable" Type="nvarchar" MaxLength="50" />
+          <Property Name="GrupoCredito" Type="int" />
+          <Property Name="DocumentoElectronico" Type="int" />
+          <Property Name="Relacionado" Type="int" />
+          <Property Name="VendedorSeccion" Type="nvarchar" MaxLength="10" />
+          <Property Name="ListaPrecioContado" Type="nvarchar" MaxLength="20" />
+          <Property Name="ListaPrecioCredito" Type="nvarchar" MaxLength="20" />
+          <Property Name="LimiteCredito" Type="int" />
+          <Property Name="Uge" Type="nvarchar" MaxLength="10" />
+          <Property Name="Bodega" Type="nvarchar" MaxLength="10" />
+          <Property Name="TipoFormaPago" Type="nvarchar" MaxLength="10" />
+          <Property Name="StatusChannel" Type="nvarchar" MaxLength="10" />
+          <Property Name="EnlaceInvoice" Type="nvarchar(max)" />
+          <Property Name="EnlaceCreditNote" Type="nvarchar(max)" />
+          <Property Name="EnlaceCotization" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChannelEnterprise">
+          <Key>
+            <PropertyRef Name="IDChannelEnterprise" />
+          </Key>
+          <Property Name="IDChannelEnterprise" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDEnterprise" Type="int" Nullable="false" />
+          <Property Name="IDChannel" Type="bigint" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Enterprise">
+          <Key>
+            <PropertyRef Name="IDEnterprise" />
+          </Key>
+          <Property Name="IDEnterprise" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Establecimiento" Type="nvarchar" MaxLength="10" />
+          <Property Name="RazonSocial" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="RUC" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DireccionMatriz" Type="nvarchar" MaxLength="300" />
+          <Property Name="TributaImpuesto" Type="bit" Nullable="false" />
+          <Property Name="Contribuyente" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ciudad" Type="nvarchar" MaxLength="20" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="10" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QueryManager">
+          <Key>
+            <PropertyRef Name="IDQueryManager" />
+          </Key>
+          <Property Name="IDQueryManager" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Query" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <Function Name="GetChannel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Channel" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetQuery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Code" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="AdministrationSwitchModelStoreContainer">
+          <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChannelEnterprise" EntityType="Self.ChannelEnterprise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enterprise" EntityType="Self.Enterprise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QueryManager" EntityType="Self.QueryManager" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdministrationSwitchModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ChannelEnterprise">
+          <Key>
+            <PropertyRef Name="IDChannelEnterprise" />
+          </Key>
+          <Property Name="IDChannelEnterprise" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDEnterprise" Type="Int32" Nullable="false" />
+          <Property Name="IDChannel" Type="Int64" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Enterprise">
+          <Key>
+            <PropertyRef Name="IDEnterprise" />
+          </Key>
+          <Property Name="IDEnterprise" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Establecimiento" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RazonSocial" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RUC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DireccionMatriz" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TributaImpuesto" Type="Boolean" Nullable="false" />
+          <Property Name="Contribuyente" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ciudad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AdministrationSwitchEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChannelEnterprise" EntityType="Self.ChannelEnterprise" />
+          <EntitySet Name="Enterprise" EntityType="Self.Enterprise" />
+          <FunctionImport Name="GetChannel" ReturnType="Collection(AdministrationSwitchModel.ChannelEnterpriseInfo)">
+          <Parameter Name="Channel" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Channel" EntityType="AdministrationSwitchModel.Channel" />
+          <EntitySet Name="QueryManager" EntityType="AdministrationSwitchModel.QueryManager" />
+          <FunctionImport Name="GetQuery" ReturnType="Collection(AdministrationSwitchModel.QueryInfo)">
+          <Parameter Name="Code" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ChannelEnterpriseInfo">
+          <Property Type="Int32" Name="IDChannelEnterprise" Nullable="false" />
+          <Property Type="Int64" Name="IDChannel" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Segmento" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PuntoEmision" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Ambiente" Nullable="true" />
+          <Property Type="Int32" Name="Iva" Nullable="true" />
+          <Property Type="String" Name="CodigoProducto" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="NombreProducto" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="CategoriaCliente" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="CuentaContable" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="GrupoCredito" Nullable="true" />
+          <Property Type="Int32" Name="DocumentoElectronico" Nullable="true" />
+          <Property Type="Int32" Name="Relacionado" Nullable="true" />
+          <Property Type="String" Name="VendedorSeccion" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ListaPrecioContado" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ListaPrecioCredito" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="LimiteCredito" Nullable="true" />
+          <Property Type="String" Name="Uge" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Bodega" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TipoFormaPago" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="StatusChannel" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDEnterprise" Nullable="false" />
+          <Property Type="String" Name="Establecimiento" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="RazonSocial" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="RUC" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="DireccionMatriz" Nullable="true" MaxLength="300" />
+          <Property Type="Boolean" Name="TributaImpuesto" Nullable="false" />
+          <Property Type="String" Name="Contribuyente" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Ciudad" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="10" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="String" Name="EnlaceInvoice" Nullable="true" />
+          <Property Type="String" Name="EnlaceCreditNote" Nullable="true" />
+          <Property Type="String" Name="EnlaceCotization" Nullable="true" />
+          <Property Type="String" Name="Code" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="AuthotizationNumber" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="ProductItemGroupCode" Nullable="true" />
+          <Property Type="String" Name="Declarable" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="IVACode" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IdentificatorChannelSAP" Nullable="true" />
+          <Property Type="Int32" Name="IdentificatorChannelCreditNoteSAP" Nullable="true" />
+          <Property Type="Boolean" Name="PaymentReceivedRequired" Nullable="false" />
+          <Property Type="DateTime" Name="LimitStartDateTransactions" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LimitFinishDateTransactions" Nullable="false" Precision="23" />
+        </ComplexType>
+        <EntityType Name="Channel">
+          <Key>
+            <PropertyRef Name="IDChannel" />
+          </Key>
+          <Property Name="IDChannel" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Segmento" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PuntoEmision" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ambiente" Type="Int32" />
+          <Property Name="Iva" Type="Int32" />
+          <Property Name="CodigoProducto" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NombreProducto" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CategoriaCliente" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CuentaContable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GrupoCredito" Type="Int32" />
+          <Property Name="DocumentoElectronico" Type="Int32" />
+          <Property Name="Relacionado" Type="Int32" />
+          <Property Name="VendedorSeccion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ListaPrecioContado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ListaPrecioCredito" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LimiteCredito" Type="Int32" />
+          <Property Name="Uge" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Bodega" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TipoFormaPago" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StatusChannel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EnlaceInvoice" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EnlaceCreditNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EnlaceCotization" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AuthotizationNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductItemGroupCode" Type="Int32" />
+          <Property Name="Declarable" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="QueryManager">
+          <Key>
+            <PropertyRef Name="IDQueryManager" />
+          </Key>
+          <Property Name="IDQueryManager" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Query" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="QueryInfo">
+          <Property Type="Int32" Name="IDQueryManager" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Query" Nullable="false" MaxLength="500" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdministrationSwitchModelStoreContainer" CdmEntityContainer="AdministrationSwitchEntities">
+          <EntitySetMapping Name="ChannelEnterprise">
+            <EntityTypeMapping TypeName="AdministrationSwitchModel.ChannelEnterprise">
+              <MappingFragment StoreEntitySet="ChannelEnterprise">
+                <ScalarProperty Name="IDChannelEnterprise" ColumnName="IDChannelEnterprise" />
+                <ScalarProperty Name="IDEnterprise" ColumnName="IDEnterprise" />
+                <ScalarProperty Name="IDChannel" ColumnName="IDChannel" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enterprise">
+            <EntityTypeMapping TypeName="AdministrationSwitchModel.Enterprise">
+              <MappingFragment StoreEntitySet="Enterprise">
+                <ScalarProperty Name="IDEnterprise" ColumnName="IDEnterprise" />
+                <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="RUC" ColumnName="RUC" />
+                <ScalarProperty Name="DireccionMatriz" ColumnName="DireccionMatriz" />
+                <ScalarProperty Name="TributaImpuesto" ColumnName="TributaImpuesto" />
+                <ScalarProperty Name="Contribuyente" ColumnName="Contribuyente" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetChannel" FunctionName="AdministrationSwitchModel.Store.GetChannel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdministrationSwitchModel.ChannelEnterpriseInfo">
+                <ScalarProperty Name="IDChannelEnterprise" ColumnName="IDChannelEnterprise" />
+                <ScalarProperty Name="IDChannel" ColumnName="IDChannel" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Segmento" ColumnName="Segmento" />
+                <ScalarProperty Name="PuntoEmision" ColumnName="PuntoEmision" />
+                <ScalarProperty Name="Ambiente" ColumnName="Ambiente" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="CategoriaCliente" ColumnName="CategoriaCliente" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+                <ScalarProperty Name="GrupoCredito" ColumnName="GrupoCredito" />
+                <ScalarProperty Name="DocumentoElectronico" ColumnName="DocumentoElectronico" />
+                <ScalarProperty Name="Relacionado" ColumnName="Relacionado" />
+                <ScalarProperty Name="VendedorSeccion" ColumnName="VendedorSeccion" />
+                <ScalarProperty Name="ListaPrecioContado" ColumnName="ListaPrecioContado" />
+                <ScalarProperty Name="ListaPrecioCredito" ColumnName="ListaPrecioCredito" />
+                <ScalarProperty Name="LimiteCredito" ColumnName="LimiteCredito" />
+                <ScalarProperty Name="Uge" ColumnName="Uge" />
+                <ScalarProperty Name="Bodega" ColumnName="Bodega" />
+                <ScalarProperty Name="TipoFormaPago" ColumnName="TipoFormaPago" />
+                <ScalarProperty Name="StatusChannel" ColumnName="StatusChannel" />
+                <ScalarProperty Name="IDEnterprise" ColumnName="IDEnterprise" />
+                <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="RUC" ColumnName="RUC" />
+                <ScalarProperty Name="DireccionMatriz" ColumnName="DireccionMatriz" />
+                <ScalarProperty Name="TributaImpuesto" ColumnName="TributaImpuesto" />
+                <ScalarProperty Name="Contribuyente" ColumnName="Contribuyente" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EnlaceInvoice" ColumnName="EnlaceInvoice" />
+                <ScalarProperty Name="EnlaceCreditNote" ColumnName="EnlaceCreditNote" />
+                <ScalarProperty Name="EnlaceCotization" ColumnName="EnlaceCotization" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AuthotizationNumber" ColumnName="AuthotizationNumber" />
+                <ScalarProperty Name="ProductItemGroupCode" ColumnName="ProductItemGroupCode" />
+                <ScalarProperty Name="Declarable" ColumnName="Declarable" />
+                <ScalarProperty Name="IVACode" ColumnName="IVACode" />
+                <ScalarProperty Name="IdentificatorChannelSAP" ColumnName="IdentificatorChannelSAP" />
+                <ScalarProperty Name="IdentificatorChannelCreditNoteSAP" ColumnName="IdentificatorChannelCreditNoteSAP" />
+                <ScalarProperty Name="PaymentReceivedRequired" ColumnName="PaymentReceivedRequired" />
+                <ScalarProperty Name="LimitStartDateTransactions" ColumnName="LimitStartDateTransactions" />
+                <ScalarProperty Name="LimitFinishDateTransactions" ColumnName="LimitFinishDateTransactions" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Channel">
+            <EntityTypeMapping TypeName="AdministrationSwitchModel.Channel">
+              <MappingFragment StoreEntitySet="Channel">
+                <ScalarProperty Name="Declarable" ColumnName="Declarable" />
+                <ScalarProperty Name="ProductItemGroupCode" ColumnName="ProductItemGroupCode" />
+                <ScalarProperty Name="AuthotizationNumber" ColumnName="AuthotizationNumber" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EnlaceCotization" ColumnName="EnlaceCotization" />
+                <ScalarProperty Name="EnlaceCreditNote" ColumnName="EnlaceCreditNote" />
+                <ScalarProperty Name="EnlaceInvoice" ColumnName="EnlaceInvoice" />
+                <ScalarProperty Name="StatusChannel" ColumnName="StatusChannel" />
+                <ScalarProperty Name="TipoFormaPago" ColumnName="TipoFormaPago" />
+                <ScalarProperty Name="Bodega" ColumnName="Bodega" />
+                <ScalarProperty Name="Uge" ColumnName="Uge" />
+                <ScalarProperty Name="LimiteCredito" ColumnName="LimiteCredito" />
+                <ScalarProperty Name="ListaPrecioCredito" ColumnName="ListaPrecioCredito" />
+                <ScalarProperty Name="ListaPrecioContado" ColumnName="ListaPrecioContado" />
+                <ScalarProperty Name="VendedorSeccion" ColumnName="VendedorSeccion" />
+                <ScalarProperty Name="Relacionado" ColumnName="Relacionado" />
+                <ScalarProperty Name="DocumentoElectronico" ColumnName="DocumentoElectronico" />
+                <ScalarProperty Name="GrupoCredito" ColumnName="GrupoCredito" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
+                <ScalarProperty Name="CategoriaCliente" ColumnName="CategoriaCliente" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="Ambiente" ColumnName="Ambiente" />
+                <ScalarProperty Name="PuntoEmision" ColumnName="PuntoEmision" />
+                <ScalarProperty Name="Segmento" ColumnName="Segmento" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IDChannel" ColumnName="IDChannel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QueryManager">
+            <EntityTypeMapping TypeName="AdministrationSwitchModel.QueryManager">
+              <MappingFragment StoreEntitySet="QueryManager">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Query" ColumnName="Query" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="IDQueryManager" ColumnName="IDQueryManager" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetQuery" FunctionName="AdministrationSwitchModel.Store.GetQuery">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdministrationSwitchModel.QueryInfo">
+                <ScalarProperty Name="IDQueryManager" ColumnName="IDQueryManager" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Query" ColumnName="Query" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
