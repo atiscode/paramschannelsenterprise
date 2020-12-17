@@ -13,10 +13,14 @@
           <Property Name="Fecha" Type="datetime" Nullable="false" />
           <Property Name="Segmento" Type="nvarchar" MaxLength="100" />
           <Property Name="Code" Type="nvarchar" MaxLength="150" />
+          <Property Name="IdentificatorChannelSAP" Type="int" />
+          <Property Name="IdentificatorChannelCreditNoteSAP" Type="int" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
           <Property Name="AuthotizationNumber" Type="nvarchar" MaxLength="20" />
           <Property Name="ProductItemGroupCode" Type="int" />
           <Property Name="Declarable" Type="char" MaxLength="1" />
+          <Property Name="IVACode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentReceivedRequired" Type="bit" Nullable="false" />
           <Property Name="PuntoEmision" Type="nvarchar" MaxLength="100" />
           <Property Name="Ambiente" Type="int" />
           <Property Name="Iva" Type="int" />
@@ -24,6 +28,7 @@
           <Property Name="NombreProducto" Type="nvarchar" MaxLength="300" />
           <Property Name="CategoriaCliente" Type="nvarchar" MaxLength="300" />
           <Property Name="CuentaContable" Type="nvarchar" MaxLength="50" />
+          <Property Name="BalanceAccount" Type="nvarchar" MaxLength="100" />
           <Property Name="GrupoCredito" Type="int" />
           <Property Name="DocumentoElectronico" Type="int" />
           <Property Name="Relacionado" Type="int" />
@@ -39,6 +44,8 @@
           <Property Name="EnlaceCreditNote" Type="nvarchar(max)" />
           <Property Name="EnlaceCotization" Type="nvarchar(max)" />
           <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="LimitStartDateTransactions" Type="datetime" Nullable="false" />
+          <Property Name="LimitFinishDateTransactions" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="ChannelEnterprise">
           <Key>
@@ -173,6 +180,7 @@
           <Property Type="Boolean" Name="PaymentReceivedRequired" Nullable="false" />
           <Property Type="DateTime" Name="LimitStartDateTransactions" Nullable="false" Precision="23" />
           <Property Type="DateTime" Name="LimitFinishDateTransactions" Nullable="false" Precision="23" />
+          <Property Type="String" Name="BalanceAccount" Nullable="true" MaxLength="100" />
         </ComplexType>
         <EntityType Name="Channel">
           <Key>
@@ -208,6 +216,13 @@
           <Property Name="AuthotizationNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ProductItemGroupCode" Type="Int32" />
           <Property Name="Declarable" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="IdentificatorChannelSAP" Type="Int32" />
+          <Property Name="IdentificatorChannelCreditNoteSAP" Type="Int32" />
+          <Property Name="IVACode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentReceivedRequired" Type="Boolean" Nullable="false" />
+          <Property Name="BalanceAccount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LimitStartDateTransactions" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LimitFinishDateTransactions" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="QueryManager">
           <Key>
@@ -307,12 +322,20 @@
                 <ScalarProperty Name="PaymentReceivedRequired" ColumnName="PaymentReceivedRequired" />
                 <ScalarProperty Name="LimitStartDateTransactions" ColumnName="LimitStartDateTransactions" />
                 <ScalarProperty Name="LimitFinishDateTransactions" ColumnName="LimitFinishDateTransactions" />
+                <ScalarProperty Name="BalanceAccount" ColumnName="BalanceAccount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <EntitySetMapping Name="Channel">
             <EntityTypeMapping TypeName="AdministrationSwitchModel.Channel">
               <MappingFragment StoreEntitySet="Channel">
+                <ScalarProperty Name="LimitFinishDateTransactions" ColumnName="LimitFinishDateTransactions" />
+                <ScalarProperty Name="LimitStartDateTransactions" ColumnName="LimitStartDateTransactions" />
+                <ScalarProperty Name="BalanceAccount" ColumnName="BalanceAccount" />
+                <ScalarProperty Name="PaymentReceivedRequired" ColumnName="PaymentReceivedRequired" />
+                <ScalarProperty Name="IVACode" ColumnName="IVACode" />
+                <ScalarProperty Name="IdentificatorChannelCreditNoteSAP" ColumnName="IdentificatorChannelCreditNoteSAP" />
+                <ScalarProperty Name="IdentificatorChannelSAP" ColumnName="IdentificatorChannelSAP" />
                 <ScalarProperty Name="Declarable" ColumnName="Declarable" />
                 <ScalarProperty Name="ProductItemGroupCode" ColumnName="ProductItemGroupCode" />
                 <ScalarProperty Name="AuthotizationNumber" ColumnName="AuthotizationNumber" />

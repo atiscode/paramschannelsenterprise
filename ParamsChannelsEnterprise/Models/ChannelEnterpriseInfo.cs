@@ -59,5 +59,6 @@ namespace ParamsChannelsEnterprise.Models
         public bool PaymentReceivedRequired { get; set; }
         public System.DateTime LimitStartDateTransactions { get; set; }
         public System.DateTime LimitFinishDateTransactions { get; set; }
+        public string BalanceAccount { get; set; }
     }
 }

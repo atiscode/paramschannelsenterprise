@@ -44,5 +44,12 @@ namespace ParamsChannelsEnterprise.Models
         public string AuthotizationNumber { get; set; }
         public Nullable<int> ProductItemGroupCode { get; set; }
         public string Declarable { get; set; }
+        public Nullable<int> IdentificatorChannelSAP { get; set; }
+        public Nullable<int> IdentificatorChannelCreditNoteSAP { get; set; }
+        public string IVACode { get; set; }
+        public bool PaymentReceivedRequired { get; set; }
+        public string BalanceAccount { get; set; }
+        public System.DateTime LimitStartDateTransactions { get; set; }
+        public System.DateTime LimitFinishDateTransactions { get; set; }
     }
 }
