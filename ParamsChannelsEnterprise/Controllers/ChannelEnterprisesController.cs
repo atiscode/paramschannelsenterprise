@@ -39,6 +39,34 @@ namespace ParamsChannelsEnterprise.Controllers
             }
         }
 
+        [Route("api/ChannelEnterprises/GetChannelByDocumentNumber")]
+        [HttpGet]
+        public async Task<HttpResponseMessage> GetChannelByDocumentNumber(string documentNumber)
+        {
+            try
+            {
+                List<ChannelEnterpriseInfo> channelEnterprise = new List<ChannelEnterpriseInfo>();
+
+                await Task.Run(() =>
+                { // no await here and function as a whole is not async
+                    channelEnterprise = db.GetChannel(null).ToList();
+                });
+
+                string emissionPoint = documentNumber.Substring(3, 3);
+
+                var channel = channelEnterprise.FirstOrDefault(s => s.PuntoEmision == emissionPoint);
+
+                if (channel != null)
+                    return Request.CreateResponse(HttpStatusCode.OK, channel);
+                else
+                    return Request.CreateResponse(HttpStatusCode.NotFound, string.Format("Emission Point {0} not found. Invalid channel.", emissionPoint));
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
         // GET: api/ChannelEnterprises/5
         [ResponseType(typeof(ChannelEnterprise))]
         public async Task<HttpResponseMessage> GetChannelEnterprise(string channel)

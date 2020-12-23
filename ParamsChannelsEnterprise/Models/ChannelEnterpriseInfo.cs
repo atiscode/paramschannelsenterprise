@@ -15,7 +15,7 @@ namespace ParamsChannelsEnterprise.Models
     {
         public int IDChannelEnterprise { get; set; }
         public long IDChannel { get; set; }
-        public System.DateTime Fecha { get; set; }
+        public Nullable<System.DateTime> Fecha { get; set; }
         public string Segmento { get; set; }
         public string PuntoEmision { get; set; }
         public Nullable<int> Ambiente { get; set; }
@@ -40,7 +40,7 @@ namespace ParamsChannelsEnterprise.Models
         public string RazonSocial { get; set; }
         public string RUC { get; set; }
         public string DireccionMatriz { get; set; }
-        public bool TributaImpuesto { get; set; }
+        public Nullable<bool> TributaImpuesto { get; set; }
         public string Contribuyente { get; set; }
         public string Ciudad { get; set; }
         public string Telefono { get; set; }
@@ -56,9 +56,25 @@ namespace ParamsChannelsEnterprise.Models
         public string IVACode { get; set; }
         public Nullable<int> IdentificatorChannelSAP { get; set; }
         public Nullable<int> IdentificatorChannelCreditNoteSAP { get; set; }
-        public bool PaymentReceivedRequired { get; set; }
-        public System.DateTime LimitStartDateTransactions { get; set; }
-        public System.DateTime LimitFinishDateTransactions { get; set; }
+        public Nullable<bool> PaymentReceivedRequired { get; set; }
+        public Nullable<System.DateTime> LimitStartDateTransactions { get; set; }
+        public Nullable<System.DateTime> LimitFinishDateTransactions { get; set; }
         public string BalanceAccount { get; set; }
+        public Nullable<int> CredencialsUserID { get; set; }
+        public string Username { get; set; }
+        public string PasswordUser { get; set; }
+        public Nullable<int> CredentialsServerID { get; set; }
+        public string UsernameServer { get; set; }
+        public string PasswordServer { get; set; }
+        public string Servername { get; set; }
+        public string Databasename { get; set; }
+        public Nullable<int> FinancialSizingID { get; set; }
+        public string NombreDimension1 { get; set; }
+        public string Dimension1 { get; set; }
+        public string NombreDimension2 { get; set; }
+        public string Dimension2 { get; set; }
+        public string NombreDimension3 { get; set; }
+        public string CodeDimension3 { get; set; }
+        public string Dimension3 { get; set; }
     }
 }

@@ -306,6 +306,9 @@
     <Content Include="Models\SwitchAtiscode.edmx.diagram">
       <DependentUpon>SwitchAtiscode.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\parameterswitch-dev - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\parameterswitch-dev - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

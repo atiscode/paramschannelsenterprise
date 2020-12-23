@@ -136,7 +136,7 @@
         <ComplexType Name="ChannelEnterpriseInfo">
           <Property Type="Int32" Name="IDChannelEnterprise" Nullable="false" />
           <Property Type="Int64" Name="IDChannel" Nullable="false" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
           <Property Type="String" Name="Segmento" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="PuntoEmision" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="Ambiente" Nullable="true" />
@@ -158,10 +158,10 @@
           <Property Type="String" Name="StatusChannel" Nullable="true" MaxLength="10" />
           <Property Type="Int32" Name="IDEnterprise" Nullable="false" />
           <Property Type="String" Name="Establecimiento" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="RazonSocial" Nullable="false" MaxLength="300" />
-          <Property Type="String" Name="RUC" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="RazonSocial" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="RUC" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="DireccionMatriz" Nullable="true" MaxLength="300" />
-          <Property Type="Boolean" Name="TributaImpuesto" Nullable="false" />
+          <Property Type="Boolean" Name="TributaImpuesto" Nullable="true" />
           <Property Type="String" Name="Contribuyente" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Ciudad" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="Telefono" Nullable="true" MaxLength="10" />
@@ -177,10 +177,26 @@
           <Property Type="String" Name="IVACode" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="IdentificatorChannelSAP" Nullable="true" />
           <Property Type="Int32" Name="IdentificatorChannelCreditNoteSAP" Nullable="true" />
-          <Property Type="Boolean" Name="PaymentReceivedRequired" Nullable="false" />
-          <Property Type="DateTime" Name="LimitStartDateTransactions" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LimitFinishDateTransactions" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="PaymentReceivedRequired" Nullable="true" />
+          <Property Type="DateTime" Name="LimitStartDateTransactions" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LimitFinishDateTransactions" Nullable="true" Precision="23" />
           <Property Type="String" Name="BalanceAccount" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CredencialsUserID" Nullable="true" />
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="CredentialsServerID" Nullable="true" />
+          <Property Type="String" Name="UsernameServer" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="PasswordServer" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Servername" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Databasename" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="FinancialSizingID" Nullable="true" />
+          <Property Type="String" Name="NombreDimension1" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Dimension1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NombreDimension2" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Dimension2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NombreDimension3" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="CodeDimension3" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Dimension3" Nullable="true" MaxLength="152" />
+          <Property Type="String" Name="PasswordUser" Nullable="true" MaxLength="500" />
         </ComplexType>
         <EntityType Name="Channel">
           <Key>
@@ -323,6 +339,22 @@
                 <ScalarProperty Name="LimitStartDateTransactions" ColumnName="LimitStartDateTransactions" />
                 <ScalarProperty Name="LimitFinishDateTransactions" ColumnName="LimitFinishDateTransactions" />
                 <ScalarProperty Name="BalanceAccount" ColumnName="BalanceAccount" />
+                <ScalarProperty Name="CredencialsUserID" ColumnName="CredencialsUserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="CredentialsServerID" ColumnName="CredentialsServerID" />
+                <ScalarProperty Name="UsernameServer" ColumnName="UsernameServer" />
+                <ScalarProperty Name="PasswordServer" ColumnName="PasswordServer" />
+                <ScalarProperty Name="Servername" ColumnName="Servername" />
+                <ScalarProperty Name="Databasename" ColumnName="Databasename" />
+                <ScalarProperty Name="FinancialSizingID" ColumnName="FinancialSizingID" />
+                <ScalarProperty Name="NombreDimension1" ColumnName="NombreDimension1" />
+                <ScalarProperty Name="Dimension1" ColumnName="Dimension1" />
+                <ScalarProperty Name="NombreDimension2" ColumnName="NombreDimension2" />
+                <ScalarProperty Name="Dimension2" ColumnName="Dimension2" />
+                <ScalarProperty Name="NombreDimension3" ColumnName="NombreDimension3" />
+                <ScalarProperty Name="CodeDimension3" ColumnName="CodeDimension3" />
+                <ScalarProperty Name="Dimension3" ColumnName="Dimension3" />
+                <ScalarProperty Name="PasswordUser" ColumnName="PasswordUser" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
